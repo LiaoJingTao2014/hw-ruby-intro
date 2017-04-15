@@ -54,17 +54,50 @@ def starts_with_consonant? s
 end
 
 def binary_multiple_of_4? s
-  # YOUR CODE HERE
+   #YOUR CODE HERE
+  if s.empty?
+    return false
+  end
+  if s.match(/^[0|1]+$/)    #匹配只有0或1的字符串
+          if (Integer("0b#{s}")%4)==0
+            return true
+          else
+            return false
+          end
+  else 
+    return false
+  end
 end
 
 # Part 3
 
 class BookInStock
 # YOUR CODE HERE
-def initialize isbn,price
-  @isbn = isbn
-  @price = price
-end
-def price_to_string s
-end
+@isbn=""
+@price=0
+   def isbn=(value)
+       @isbn=value
+   end
+   def price=(value)
+      @price=value
+   end
+   def isbn
+     return @isbn
+   end
+   def price
+     return @price
+   end
+   def initialize(isbn,price)
+      @isbn=isbn
+      @price=price
+      if(@isbn.empty?||@price<=0)
+        raise ArgumentError
+      end
+   end
+   def price_as_string
+      if @price>0
+        @s=format("%.2f",@price)
+        return "$"+@s.to_s
+      end
+   end
 end
