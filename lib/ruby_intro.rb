@@ -1,7 +1,6 @@
 # When done, submit this entire file to the autograder.
 
 # Part 1
-arr = Array[8,-5,-1]
 def sum arr
   # YOUR CODE HERE
   nums = 0
@@ -42,20 +41,24 @@ end
 # Part 2
 def hello(name)
   # YOUR CODE HERE
-  str = "hello,"+name
+  str = "Hello, "
+  str += name.to_s
   return str
 end
 
 def starts_with_consonant? s
-	if s[0,1] =~/[aeiouAEIOU]/
-		return false
-	end
-	return true
+   if s.empty?      #字符串为空
+    return false
+  elsif s[0].match(/a|A|e|E|i|I|o|O|u|U|\$|#/)   #字符串以元音字母或“$”或"#"开头，并用正则表达式进行判定
+      return false
+  else
+       return true
+end
 end
 
 def binary_multiple_of_4? s
    #YOUR CODE HERE
-  if s.empty?
+   if s.empty?
     return false
   end
   if s.match(/^[0|1]+$/)    #匹配只有0或1的字符串
